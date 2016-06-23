@@ -32,34 +32,34 @@ namespace XGY_WeiXin.WeiXinHelper
     }
 
     #region 处理微信后台传递过来的xml信息，(就是用户的请求。)
-    ///// <summary>
-    /////1： 处理用户发送过来的文字消息。重写OnTextRequest方法。
-    ///// --------（总结：）方法里面可以自由发挥，读取DB，判断关键字，甚至返回不同的ResponseMessageXX类型（只要最终的类型都是在IResponseMessageBase接口下的即可）。
-    ///// </summary>
-    ///// <param name="requestMessage">请求消息</param>
-    ///// <returns></returns>
-    //public override IResponseMessageBase OnTextRequest(RequestMessageText requestMessage)
-    //{
-    //    //CreateResponseMessage<类型>根据当前的RequestMessage创建指定类型的ResponseMessage；创建相应消息.
-    //    var responseMessage = base.CreateResponseMessage<ResponseMessageText>();
-    //    responseMessage.Content = "您的OpenID是：" + requestMessage.FromUserName + "。\r\t您发送了文字信息：" +
-    //                              requestMessage.Content;
-    //    return responseMessage;
-    //}
-    ///// <summary>
-    ///// OnExecuting会在所有消息处理方法（如OnTextRequest，OnVoiceRequest等）执行之前执行
-    ///// 1：第一个执行这个方法。之后才执行我们的处理消息。
-    ///// </summary>
-    //public override void OnExecuting()
-    //{
-    //    if (RequestMessage.FromUserName == "")
-    //    {
-    //        CancelExcute = true;  //终止此用户的对话。
-    //    }
-    //    var responseMessage = CreateResponseMessage<ResponseMessageText>();
-    //    responseMessage.Content = "不好意思，你被拉黑了。";
-    //    ResponseMessage = responseMessage;  //设置返回对象
-    //} 
+    /// <summary>
+    ///1： 处理用户发送过来的文字消息。重写OnTextRequest方法。
+    /// --------（总结：）方法里面可以自由发挥，读取DB，判断关键字，甚至返回不同的ResponseMessageXX类型（只要最终的类型都是在IResponseMessageBase接口下的即可）。
+    /// </summary>
+    /// <param name="requestMessage">请求消息</param>
+    /// <returns></returns>
+    public override IResponseMessageBase OnTextRequest(RequestMessageText requestMessage)
+    {
+        //CreateResponseMessage<类型>根据当前的RequestMessage创建指定类型的ResponseMessage；创建相应消息.
+        var responseMessage = base.CreateResponseMessage<ResponseMessageText>();
+        responseMessage.Content = "您的OpenID是：" + requestMessage.FromUserName + "。\r\t您发送了文字信息：" +
+                                  requestMessage.Content+"注意了，我是张辉";
+        return responseMessage;
+    }
+    /// <summary>
+    /// OnExecuting会在所有消息处理方法（如OnTextRequest，OnVoiceRequest等）执行之前执行
+    /// 1：第一个执行这个方法。之后才执行我们的处理消息。
+    /// </summary>
+    public override void OnExecuting()
+    {
+        if (RequestMessage.FromUserName == "")
+        {
+            CancelExcute = true;  //终止此用户的对话。
+        }
+        var responseMessage = CreateResponseMessage<ResponseMessageText>();
+        responseMessage.Content = "不好意思，你被拉黑了。";
+        ResponseMessage = responseMessage;  //设置返回对象
+    } 
     #endregion
     }
 }
