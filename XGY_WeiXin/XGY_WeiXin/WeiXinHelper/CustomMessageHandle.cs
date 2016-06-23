@@ -55,9 +55,18 @@ namespace XGY_WeiXin.WeiXinHelper
         {
             //CreateResponseMessage<类型>根据当前的RequestMessage创建指定类型的ResponseMessage；创建相应消息.
             var responseMessage = base.CreateResponseMessage<ResponseMessageText>();
-            responseMessage.Content = "您的OpenID是：" + requestMessage.FromUserName + "。\r\t您发送了文字信息：" +
-                                      requestMessage.Content + "注意了，我是张辉";            
-            return responseMessage;
+            if (requestMessage.Content=="客服")
+            {
+                //多客服功能。
+                return this.CreateResponseMessage<ResponseMessageTransfer_Customer_Service>();
+            }
+            else
+            {
+                //普通文本功能。
+                responseMessage.Content = "您的OpenID是：" + requestMessage.FromUserName + "。\r\t您发送了文字信息：" +
+                                      requestMessage.Content + "注意了，我是张辉";
+                return responseMessage;                
+            }                        
         } 
         #endregion
 

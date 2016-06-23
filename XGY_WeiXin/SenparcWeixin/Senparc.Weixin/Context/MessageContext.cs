@@ -76,11 +76,25 @@ namespace Senparc.Weixin.Context
         where TResponse : IResponseMessageBase
     {
         private int _maxRecordCount;
-
+        /// <summary>
+        /// 用户名
+        /// </summary>
         public string UserName { get; set; }
+        /// <summary>
+        /// 最后一次活动时间(用户主动发送Resquest请求的时间)
+        /// </summary>
         public DateTime LastActiveTime { get; set; }
+        /// <summary>
+        /// 接收消息记录
+        /// </summary>
         public MessageContainer<TRequest> RequestMessages { get; set; }
+        /// <summary>
+        /// 响应消息记录
+        /// </summary>
         public MessageContainer<TResponse> ResponseMessages { get; set; }
+        /// <summary>
+        /// 最大存储容量(分别针对RequestMessages和ResponseMessages)
+        /// </summary>
         public int MaxRecordCount
         {
             get
@@ -95,7 +109,13 @@ namespace Senparc.Weixin.Context
                 _maxRecordCount = value;
             }
         }
+        /// <summary>
+        /// 临时储存数据，如用户状态等，出于保持.net 3.5版本，这里暂不使用dynamic
+        /// </summary>
         public object StorageData { get; set; }
+        /// <summary>
+        /// 用于覆盖WeixinContext所设置的默认过期时间
+        /// </summary>
 
         public Double? ExpireMinutes { get; set; }
 
