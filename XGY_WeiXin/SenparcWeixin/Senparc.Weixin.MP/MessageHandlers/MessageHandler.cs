@@ -163,6 +163,7 @@ namespace Senparc.Weixin.MP.MessageHandlers
         /// </summary>
         public Func<IRequestMessageBase, bool> OmitRepeatedMessageFunc = null;
 
+        #region CTOR
         /// <summary>
         /// 构造MessageHandler
         /// </summary>
@@ -205,8 +206,8 @@ namespace Senparc.Weixin.MP.MessageHandlers
 
             var postDataDocument = requestMessageBase.ConvertEntityToXml();
             base.CommonInitialize(postDataDocument, maxRecordCount, postModel);
-        }
-
+        } 
+        #endregion
 
         public override XDocument Init(XDocument postDataDocument, object postData = null)
         {
