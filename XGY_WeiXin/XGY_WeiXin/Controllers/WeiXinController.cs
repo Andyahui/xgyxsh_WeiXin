@@ -10,6 +10,9 @@ using XGY_WeiXin.WeiXinHelper;
 
 namespace XGY_WeiXin.Controllers
 {
+    /// <summary>
+    /// 微信request和response的方法，从这里在到别的地方去处理相应的逻辑。
+    /// </summary>
     public class WeiXinController : Controller
     {
         public static readonly string Token = "xgyweixin";//与微信公众账号后台的Token设置保持一致，区分大小写。
@@ -24,7 +27,7 @@ namespace XGY_WeiXin.Controllers
         {
             if (CheckSignature.Check(postModel.Signature, postModel.Timestamp, postModel.Nonce, Token))
             {
-                return Content(echostr); //返回随机字符串则表示验证通过
+                return Content(echostr);              //返回随机字符串则表示验证通过，，官网的有说明。
             }
             else
             {
@@ -44,21 +47,19 @@ namespace XGY_WeiXin.Controllers
         {
             if (!CheckSignature.Check(postModel.Signature, postModel.Timestamp, postModel.Nonce, Token))
             {
-                return Content("参数错误！");
+                // return Content("参数错误！");
             }
+            postModel.Token = Token;
+           // postModel.EncodingAESKey = "";//根据自己后台的设置保持一致
+            postModel.AppId = AppId;//根据自己后台的设置保持一致        
 
-            postModel.Token = Token;//根据自己后台的设置保持一致
-           // postModel.EncodingAESKey = EncodingAESKey;//根据自己后台的设置保持一致
-            postModel.AppId = AppId;//根据自己后台的设置保持一致
+            //自定义MessageHandler，对微信请求的详细判断操作都在这里面。 
+            var messageHandler = new CustomMessageHandle(Request.InputStream, postModel);   //接收消息
 
-            //自定义MessageHandler，对微信请求的详细判断操作都在这里面。
-            var messageHandler = new CustomMessageHandle(Request.InputStream, postModel);//接收消息
-
-            messageHandler.Execute();//执行微信处理过程
-
-            return new FixWeixinBugWeixinResult(messageHandler.ToString());//返回结果
-
+            //执行微信处理过程
+            messageHandler.Execute();           
+           // return new FixWeixinBugWeixinResult(messageHandler);//为了解决官方微信5.0软件换行bug暂时添加的方法，平时用下面一个方法即可
+            return new WeixinResult(messageHandler);//v0.8+
+            }
         }
-
     }
-}
