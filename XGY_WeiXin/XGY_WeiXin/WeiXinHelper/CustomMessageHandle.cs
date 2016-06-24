@@ -46,7 +46,7 @@ namespace XGY_WeiXin.WeiXinHelper
 
        //（总结：）方法里面可以自由发挥，读取DB，判断关键字，甚至返回不同的ResponseMessageXX类型（只要最终的类型都是在IResponseMessageBase接口下的即可）。
 
-        #region 处理微信后台传递过来的xml信息，(就是用户的请求。)
+        #region 常规消息请求，(就是用户的请求。)
 
         #region 1：文本请求
         /// <summary>
@@ -64,7 +64,7 @@ namespace XGY_WeiXin.WeiXinHelper
                 return this.CreateResponseMessage<ResponseMessageTransfer_Customer_Service>();
             }
             else
-            {
+            {                
                 //普通文本功能。
                 responseMessage.Content = "您的OpenID是：" + requestMessage.FromUserName + "。\r\t您发送了文字信息：" +
                                       requestMessage.Content + "注意了，我是张辉";
@@ -195,5 +195,50 @@ namespace XGY_WeiXin.WeiXinHelper
         #endregion
 
     #endregion
+
+        #region 事件Event处理
+
+        #region 1：点击事件
+        /// <summary>
+        /// 点击事件
+        /// </summary>
+        /// <param name="requestMessage"></param>
+        /// <returns></returns>
+        public override IResponseMessageBase OnEvent_ClickRequest(RequestMessageEvent_Click requestMessage)
+        {
+            var respondeEvert = base.CreateResponseMessage<ResponseMessageText>();
+            respondeEvert.Content = "点击事件，";
+            return respondeEvert;
+        } 
+        #endregion
+
+        #region 2：订阅事件
+
+        public override IResponseMessageBase OnEvent_SubscribeRequest(RequestMessageEvent_Subscribe requestMessage)
+        {
+            var responseSubscribe = base.CreateResponseMessage<ResponseMessageText>();
+            responseSubscribe.Content = "欢迎订阅，张辉欢迎您。";
+            return responseSubscribe;
+        }
+
+        #endregion
+
+        #region 3：取消订阅事件
+
+        public override IResponseMessageBase OnEvent_UnsubscribeRequest(RequestMessageEvent_Unsubscribe requestMessage)
+        {
+            var responseUnScript = base.CreateResponseMessage<ResponseMessageText>();
+            responseUnScript.Content = "走了，不送。";
+            return responseUnScript;
+        }
+
+        #endregion
+
+        #region 
+        
+        #endregion
+
+
+        #endregion
     }
 }
