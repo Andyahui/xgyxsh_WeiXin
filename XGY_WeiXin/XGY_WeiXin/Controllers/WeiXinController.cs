@@ -64,6 +64,9 @@ namespace XGY_WeiXin.Controllers
 
             //  2：执行微信处理过程----执行完这里之后ResponseMessage才会有值。
             messageHandler.Execute();
+             
+           //   2.5：启动消息去重功能
+            messageHandler.OmitRepeatedMessage = true;     //启动消息去重功能。
 
             //  3：return new FixWeixinBugWeixinResult(messageHandler); 这个有换行的问题。           
             //return new FixWeixinBugWeixinResult(messageHandler.ToString());

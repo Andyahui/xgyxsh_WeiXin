@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.WebPages;
 using Senparc.Weixin.MP;
 using Senparc.Weixin.MP.Entities;
+using Senparc.Weixin.MP.Entities.BaiduMap;
 using Senparc.Weixin.MP.Entities.GoogleMap;
 using Senparc.Weixin.MP.Entities.Request;
 using Senparc.Weixin.MP.Helpers;
@@ -86,8 +87,12 @@ namespace XGY_WeiXin.WeiXinHelper
 
         public override IResponseMessageBase OnVoiceRequest(RequestMessageVoice requestMessage)
         {
-            var responseVoice = base.CreateResponseMessage<ResponseMessageText>();
-            responseVoice.Content = "这是来自语音";
+            var responseVoice = base.CreateResponseMessage<ResponseMessageVoice>();
+            responseVoice.Voice=new Voice()
+            {
+                //MediaId = "http://play.baidu.com/?__methodName=mboxCtrl.playSong&fm=altg&__argsValue=7926593#"
+                MediaId = requestMessage.MediaId
+            };           
             return responseVoice;
         }
 
@@ -97,19 +102,30 @@ namespace XGY_WeiXin.WeiXinHelper
 
         public override IResponseMessageBase OnLinkRequest(RequestMessageLink requestMessage)
         {
-            var responseLink = base.CreateResponseMessage<ResponseMessageText>();
-            responseLink.Content = "这是地址的消息提示。";
+            var responseLink = base.CreateResponseMessage<ResponseMessageNews>();
+            responseLink.Articles.Add(new Article()
+            {
+                Title="处理链接来的请求。",
+                Description =requestMessage.Description,
+                PicUrl = "http://pic.cnblogs.com/avatar/679140/20141128195544.png",
+                Url=requestMessage.Url
+            });
             return responseLink;
         }
 
         #endregion
 
-        #region 5：处理视频请求
+        #region 5：处理视频请求 -----有点问题???
 
         public override IResponseMessageBase OnShortVideoRequest(RequestMessageShortVideo requestMessage)
         {
-            var responseVideo = base.CreateResponseMessage<ResponseMessageText>();
-            responseVideo.Content = "来自视频请求";
+            var responseVideo = base.CreateResponseMessage<ResponseMessageVideo>();
+            responseVideo.Video = new Video()
+            {
+                Title = "来自视频的请求",
+                Description = "很好看的视频直播。",
+                MediaId = requestMessage.MediaId
+            };
             return responseVideo;
         }
 
@@ -119,26 +135,33 @@ namespace XGY_WeiXin.WeiXinHelper
 
         public override IResponseMessageBase OnLocationRequest(RequestMessageLocation requestMessage)
         {
+            //返回的是图文消息,是关于地址的图文消息。
             var responseLocation = base.CreateResponseMessage<ResponseMessageNews>();
 
-            var markersList = new List<GoogleMapMarkers>();
-            markersList.Add(new GoogleMapMarkers()
+            var markersList = new List<BaiduMarkers>();
+            markersList.Add(new BaiduMarkers()
             {
-                X=requestMessage.Location_X,
-                Y=requestMessage.Location_Y,
-                Color = "red",
-                Label = "5",
-                Size=GoogleMapMarkerSize.Default,
+                Size=BaiduMarkerSize.m,
+                Color ="red",
+                Label="A",
+                Latitude =requestMessage.Location_X,
+                Longitude=requestMessage.Location_Y,
             });
-            var mapSize = "480x600";
-            var mapUrl = GoogleMapHelper.GetGoogleStaticMap(19, markersList, mapSize);
+            var mapUrl = BaiduMapHelper.GetBaiduStaticMap(requestMessage.Location_Y,requestMessage.Location_X,1,13,markersList);
             responseLocation.Articles.Add(new Article()
             {
                 Description = string.Format("您刚才发送了地理位置信息。Location_X:{0},Location_Y:{1},Scale:{2},标签：{3}",requestMessage.Location_X,requestMessage.Location_Y,requestMessage.Scale,requestMessage.Label),
-                PicUrl=mapUrl,
+                PicUrl = "http://pic.cnblogs.com/avatar/679140/20141128195544.png",
                 Title="张辉的地图",
                 Url = mapUrl
             });
+            //responseLocation.Articles.Add(new Article()
+            //{
+            //    Title="小辉博客",
+            //    Description = "这个阿辉的博客地址，记录笔记和学习的地方",
+            //    PicUrl = "http://pic.cnblogs.com/avatar/679140/20141128195544.png",
+            //    Url = "http://www.cnblogs.com/netxiaohui"
+            //});
             return responseLocation;
         }
 
@@ -149,16 +172,26 @@ namespace XGY_WeiXin.WeiXinHelper
         /// OnExecuting会在所有消息处理方法（如OnTextRequest，OnVoiceRequest等）执行之前执行
         /// 1：第一个执行这个方法。之后才执行我们的文本处理。
         /// </summary>
-        //public override void OnExecuting()
-        //{
-        //    if (RequestMessage.FromUserName == "wx82e5f59acba2d931")
-        //    {
-        //        CancelExcute = true;            //终止此用户的对话。
-        //    }
-        //    var responseMessage = CreateResponseMessage<ResponseMessageText>();
-        //    responseMessage.Content = "不好意思，你被拉黑了。";
-        //    ResponseMessage = responseMessage;  //设置返回对象
-        //}  
+        public override void OnExecuting()
+        {   //01:终止用户的对话
+            //if (RequestMessage.FromUserName == "wx82e5f59acba2d931")
+            //{
+            //    CancelExcute = true;            //终止此用户的对话。
+            //}
+            //var responseMessage = CreateResponseMessage<ResponseMessageText>();
+            //responseMessage.Content = "不好意思，你被拉黑了。";
+            //ResponseMessage = responseMessage;  //设置返回对象
+
+            //02：请求去重
+            if (OmitRepeatedMessage&&CurrentMessageContext.RequestMessages.Count>1)
+            {
+                var lastMessage = CurrentMessageContext.RequestMessages[CurrentMessageContext.RequestMessages.Count-2];
+                if (lastMessage.MsgId!=0&&lastMessage.MsgId==RequestMessage.MsgId)
+                {
+                    CancelExcute = true;   //重复消息，取消执行。
+                }
+            }
+        }  
         #endregion
 
     #endregion
