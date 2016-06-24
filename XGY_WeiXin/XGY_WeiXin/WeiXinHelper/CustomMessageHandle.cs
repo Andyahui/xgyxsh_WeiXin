@@ -6,7 +6,9 @@ using System.Web;
 using System.Web.WebPages;
 using Senparc.Weixin.MP;
 using Senparc.Weixin.MP.Entities;
+using Senparc.Weixin.MP.Entities.GoogleMap;
 using Senparc.Weixin.MP.Entities.Request;
+using Senparc.Weixin.MP.Helpers;
 using Senparc.Weixin.MP.MessageHandlers;
 using Senparc.Weixin.Context;
 
@@ -117,8 +119,26 @@ namespace XGY_WeiXin.WeiXinHelper
 
         public override IResponseMessageBase OnLocationRequest(RequestMessageLocation requestMessage)
         {
-            var responseLocation = base.CreateResponseMessage<ResponseMessageText>();
-            responseLocation.Content = "来自位置请求，，ahui";
+            var responseLocation = base.CreateResponseMessage<ResponseMessageNews>();
+
+            var markersList = new List<GoogleMapMarkers>();
+            markersList.Add(new GoogleMapMarkers()
+            {
+                X=requestMessage.Location_X,
+                Y=requestMessage.Location_Y,
+                Color = "red",
+                Label = "5",
+                Size=GoogleMapMarkerSize.Default,
+            });
+            var mapSize = "480x600";
+            var mapUrl = GoogleMapHelper.GetGoogleStaticMap(19, markersList, mapSize);
+            responseLocation.Articles.Add(new Article()
+            {
+                Description = string.Format("您刚才发送了地理位置信息。Location_X:{0},Location_Y:{1},Scale:{2},标签：{3}",requestMessage.Location_X,requestMessage.Location_Y,requestMessage.Scale,requestMessage.Label),
+                PicUrl=mapUrl,
+                Title="张辉的地图",
+                Url = mapUrl
+            });
             return responseLocation;
         }
 
