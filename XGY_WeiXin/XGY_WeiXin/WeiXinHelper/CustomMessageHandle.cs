@@ -27,7 +27,7 @@ namespace XGY_WeiXin.WeiXinHelper
         {            
         }
 
-        #region 网站服务器无处理时默认回复
+        #region ***：网站服务器无处理时默认回复
         /// <summary>
         /// 没有任何处理的默认返回值。
         /// 必须实现抽象的类------作用：用于放回一条信息，当没有对应类型的微信消息没有被代码处理，那么默认会执行返回这里的结果。
@@ -46,7 +46,7 @@ namespace XGY_WeiXin.WeiXinHelper
 
        //（总结：）方法里面可以自由发挥，读取DB，判断关键字，甚至返回不同的ResponseMessageXX类型（只要最终的类型都是在IResponseMessageBase接口下的即可）。
 
-        #region 常规消息请求，(就是用户的请求。)
+        #region 一： 常规消息请求，(就是用户的请求。)
 
         #region 1：文本请求
         /// <summary>
@@ -196,7 +196,8 @@ namespace XGY_WeiXin.WeiXinHelper
 
     #endregion
 
-        #region 事件Event处理
+
+        #region 二：事件Event处理
 
         #region 1：点击事件
         /// <summary>
@@ -213,7 +214,11 @@ namespace XGY_WeiXin.WeiXinHelper
         #endregion
 
         #region 2：订阅事件
-
+        /// <summary>
+        /// 订阅事件
+        /// </summary>
+        /// <param name="requestMessage"></param>
+        /// <returns></returns>
         public override IResponseMessageBase OnEvent_SubscribeRequest(RequestMessageEvent_Subscribe requestMessage)
         {
             var responseSubscribe = base.CreateResponseMessage<ResponseMessageText>();
@@ -230,6 +235,15 @@ namespace XGY_WeiXin.WeiXinHelper
             var responseUnScript = base.CreateResponseMessage<ResponseMessageText>();
             responseUnScript.Content = "走了，不送。";
             return responseUnScript;
+        }
+
+        #endregion
+
+        #region 上报地理位置事件
+
+        public override IResponseMessageBase OnEvent_LocationRequest(RequestMessageEvent_Location requestMessage)
+        {
+            return base.OnEvent_LocationRequest(requestMessage);
         }
 
         #endregion
