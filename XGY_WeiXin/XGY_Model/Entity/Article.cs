@@ -43,7 +43,7 @@ namespace XGY_Model.Entity
     {
         public ArticleCategory()
         {
-            this.Articles=new Collection<Article>();
+            //this.Articles=new Collection<Article>();
         }
         /// <summary>
         /// 分类名字
