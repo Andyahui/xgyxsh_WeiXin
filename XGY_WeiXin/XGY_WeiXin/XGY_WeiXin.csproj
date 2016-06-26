@@ -147,6 +147,14 @@
       <Project>{814092cd-9cd0-4fb7-91e8-d147f476f1fb}</Project>
       <Name>Senparc.Weixin</Name>
     </ProjectReference>
+    <ProjectReference Include="..\XGY_Model\XGY_Model.csproj">
+      <Project>{6eb5e4e7-cbda-4161-8bc9-4b493e699d99}</Project>
+      <Name>XGY_Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XGY_Service\XGY_Service.csproj">
+      <Project>{75fbcd3e-ba17-4348-b4fd-16548c00f5ff}</Project>
+      <Name>XGY_Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Weixin.pubxml" />

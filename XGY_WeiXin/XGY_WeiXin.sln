@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Senparc.Weixin.MP", "Senpar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Senparc.Weixin.MP.MvcExtension", "SenparcWeixin\Senparc.Weixin.MP.MvcExtension\Senparc.Weixin.MP.MvcExtension.csproj", "{EE8630BC-6191-4C40-9061-12C76342562D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XGY_Model", "XGY_Model\XGY_Model.csproj", "{6EB5E4E7-CBDA-4161-8BC9-4B493E699D99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XGY_Service", "XGY_Service\XGY_Service.csproj", "{75FBCD3E-BA17-4348-B4FD-16548C00F5FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +72,24 @@ Global
 		{EE8630BC-6191-4C40-9061-12C76342562D}.Test|Any CPU.Build.0 = Release|Any CPU
 		{EE8630BC-6191-4C40-9061-12C76342562D}.Test|x86.ActiveCfg = Release|x86
 		{EE8630BC-6191-4C40-9061-12C76342562D}.Test|x86.Build.0 = Release|x86
+		{6EB5E4E7-CBDA-4161-8BC9-4B493E699D99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB5E4E7-CBDA-4161-8BC9-4B493E699D99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EB5E4E7-CBDA-4161-8BC9-4B493E699D99}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6EB5E4E7-CBDA-4161-8BC9-4B493E699D99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB5E4E7-CBDA-4161-8BC9-4B493E699D99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EB5E4E7-CBDA-4161-8BC9-4B493E699D99}.Release|x86.ActiveCfg = Release|Any CPU
+		{6EB5E4E7-CBDA-4161-8BC9-4B493E699D99}.Test|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB5E4E7-CBDA-4161-8BC9-4B493E699D99}.Test|Any CPU.Build.0 = Release|Any CPU
+		{6EB5E4E7-CBDA-4161-8BC9-4B493E699D99}.Test|x86.ActiveCfg = Release|Any CPU
+		{75FBCD3E-BA17-4348-B4FD-16548C00F5FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75FBCD3E-BA17-4348-B4FD-16548C00F5FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75FBCD3E-BA17-4348-B4FD-16548C00F5FF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{75FBCD3E-BA17-4348-B4FD-16548C00F5FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75FBCD3E-BA17-4348-B4FD-16548C00F5FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75FBCD3E-BA17-4348-B4FD-16548C00F5FF}.Release|x86.ActiveCfg = Release|Any CPU
+		{75FBCD3E-BA17-4348-B4FD-16548C00F5FF}.Test|Any CPU.ActiveCfg = Release|Any CPU
+		{75FBCD3E-BA17-4348-B4FD-16548C00F5FF}.Test|Any CPU.Build.0 = Release|Any CPU
+		{75FBCD3E-BA17-4348-B4FD-16548C00F5FF}.Test|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
