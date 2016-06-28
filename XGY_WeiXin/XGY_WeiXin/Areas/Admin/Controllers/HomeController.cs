@@ -11,18 +11,10 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
     public class HomeController : Controller
     {
         private UnitOfWork unitOfWork=new UnitOfWork();
-        private Repository<Article> articleRepository; 
-        public HomeController()
-        {
-            //通过工作单元来初始化仓储
-            articleRepository = unitOfWork.Repository<Article>();
-        }
-        // GET: Admin/Home
+
         public ActionResult Index()
         {
-            //var id = Guid.Parse("058ddc1e-233d-47ba-a74b-490b13821916");
-            //var article = articleRepository.GetById(id);
-            List<Article> listArticles = articleRepository.Table.ToList();
+            var listArticles = unitOfWork.ArticleRepository.Get();
             return View(listArticles);
         }
         [HttpGet]
@@ -30,7 +22,7 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
         {
             return View();
         }
-
+        [HttpPost, ActionName("CreateArticle")]
         public ActionResult CreateArticlePost()
         {
             return View();

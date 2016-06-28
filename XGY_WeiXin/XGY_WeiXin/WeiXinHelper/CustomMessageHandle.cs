@@ -89,8 +89,7 @@ namespace XGY_WeiXin.WeiXinHelper
         {
             var responseVoice = base.CreateResponseMessage<ResponseMessageVoice>();
             responseVoice.Voice=new Voice()
-            {
-                //MediaId = "http://play.baidu.com/?__methodName=mboxCtrl.playSong&fm=altg&__argsValue=7926593#"
+            {                
                 MediaId = requestMessage.MediaId
             };           
             return responseVoice;
@@ -155,13 +154,6 @@ namespace XGY_WeiXin.WeiXinHelper
                 Title="张辉的地图",
                 Url = mapUrl
             });
-            //responseLocation.Articles.Add(new Article()
-            //{
-            //    Title="小辉博客",
-            //    Description = "这个阿辉的博客地址，记录笔记和学习的地方",
-            //    PicUrl = "http://pic.cnblogs.com/avatar/679140/20141128195544.png",
-            //    Url = "http://www.cnblogs.com/netxiaohui"
-            //});
             return responseLocation;
         }
 
@@ -193,6 +185,7 @@ namespace XGY_WeiXin.WeiXinHelper
             }
         }  
         #endregion
+        
 
     #endregion
 
@@ -247,6 +240,13 @@ namespace XGY_WeiXin.WeiXinHelper
         }
 
         #endregion
+
+        public override IResponseMessageBase OnEvent_ViewRequest(RequestMessageEvent_View requestMessage)
+        {
+            var responseView = base.CreateResponseMessage<ResponseMessageText>();
+            responseView.Content = "点击带有view的菜单栏";
+            return responseView;
+        }
 
         #region 
         

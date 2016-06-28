@@ -15,7 +15,7 @@ namespace XGY_Model.Entity
     {
         public User()
         {
-            this.Articles =new Collection<Article>();
+            //this.Articles =new Collection<Article>();
         }
         /// <summary>
         /// 用户名(真实姓名)
