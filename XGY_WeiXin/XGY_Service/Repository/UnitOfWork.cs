@@ -81,6 +81,24 @@ namespace XGY_Service.Repository
 
         #endregion
 
+        #region ArticleCategoryRepository
+
+        private Repository<ArticleCategory> _articleCategoryRepository;
+
+        public Repository<ArticleCategory> ArticleCategoryRepository
+        {
+            get
+            {
+                if (_articleCategoryRepository==null)
+                {
+                     _articleCategoryRepository=new Repository<ArticleCategory>(context);
+                }
+                return _articleCategoryRepository;
+            }
+        }
+
+        #endregion
+
         #endregion
 
 

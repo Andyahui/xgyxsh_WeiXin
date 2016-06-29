@@ -8,22 +8,12 @@ using XGY_Service.Repository;
 
 namespace XGY_WeiXin.Areas.Admin.Controllers
 {
+    /// <summary>
+    /// 主页
+    /// </summary>
     public class HomeController : Controller
-    {
-        private UnitOfWork unitOfWork=new UnitOfWork();
-
+    {        
         public ActionResult Index()
-        {
-            var listArticles = unitOfWork.ArticleRepository.Get();
-            return View(listArticles);
-        }
-        [HttpGet]
-        public ActionResult CreateArticle()
-        {
-            return View();
-        }
-        [HttpPost, ActionName("CreateArticle")]
-        public ActionResult CreateArticlePost()
         {
             return View();
         }

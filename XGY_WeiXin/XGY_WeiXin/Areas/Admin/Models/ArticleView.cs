@@ -6,7 +6,7 @@ using XGY_Model.Entity;
 
 namespace XGY_WeiXin.Areas.Admin.Models
 {
-    public class Article
+    public class ArticleView
     {
         public Guid Id { get; set; }
         public DateTime CreateTime { get; set; }
@@ -15,12 +15,12 @@ namespace XGY_WeiXin.Areas.Admin.Models
         public string PicUrl { get; set; }
         public string Content { get; set; }
         public User User { get; set; }
-        public ArticleCategory ArticleCategory { get; set; }
+        public ArticleCategoryView ArticleCategory { get; set; }
     }
     /// <summary>
     /// 文章分类
     /// </summary>
-    public class ArticleCategory
+    public class ArticleCategoryView
     {
         public string Name { get; set; }
     }
