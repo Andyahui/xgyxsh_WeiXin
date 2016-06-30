@@ -27,9 +27,11 @@ namespace XGY_WeiXin.Areas.Admin.Models
         {
             Mapper.CreateMap<Article,ArticleView>();
             Mapper.CreateMap<ArticleCategory,ArticleCategoryView>();
-            Mapper.CreateMap<ArticleCategoryView, ArticleCategory>();
+
+            //Mapper.CreateMap<ArticleCategoryView, ArticleCategory>();
             Mapper.CreateMap<CreateArticleView, Article>();
-            Mapper.CreateMap<Article,CreateArticleView>();
+
+            //Mapper.CreateMap<Article,CreateArticleView>();
         }
     }
 }
