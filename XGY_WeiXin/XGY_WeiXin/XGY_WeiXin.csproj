@@ -112,8 +112,10 @@
     <Compile Include="Areas\Admin\Controllers\ArticleCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Models\ArticleView.cs" />
     <Compile Include="Areas\Admin\Models\ModelMapper.cs" />
+    <Compile Include="Areas\Admin\Models\UserView.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WeiXinController.cs" />
@@ -163,6 +165,9 @@
     <Content Include="Areas\Admin\Views\ArticleCategory\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ArticleCategory\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ArticleCategory\Update.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Update.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

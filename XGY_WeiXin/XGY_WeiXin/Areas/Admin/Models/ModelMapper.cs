@@ -33,7 +33,6 @@ namespace XGY_WeiXin.Areas.Admin.Models
             Mapper.CreateMap<CreateArticleView, Article>();
             #endregion
 
-
             #region ArticleCategory
             Mapper.CreateMap<ArticleCategory, ArticleCategoryView>();
 
@@ -41,6 +40,15 @@ namespace XGY_WeiXin.Areas.Admin.Models
 
             Mapper.CreateMap<ArticleCategory, UpdateArticleCategoryView>();
             Mapper.CreateMap<UpdateArticleCategoryView, ArticleCategory>(); 
+            #endregion
+
+            #region User
+
+            Mapper.CreateMap<User,UserView>();
+            Mapper.CreateMap<CreateUserView,User>();
+            Mapper.CreateMap<User,UpdateUserView>();
+            Mapper.CreateMap<UpdateUserView, User>();
+
             #endregion
         }
     }
