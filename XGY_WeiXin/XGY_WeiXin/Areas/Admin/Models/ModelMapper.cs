@@ -25,13 +25,23 @@ namespace XGY_WeiXin.Areas.Admin.Models
         /// </summary>
         public void Execute()
         {
-            Mapper.CreateMap<Article,ArticleView>();
-            Mapper.CreateMap<ArticleCategory,ArticleCategoryView>();
+            #region Article
 
-            //Mapper.CreateMap<ArticleCategoryView, ArticleCategory>();
+            Mapper.CreateMap<Article, ArticleView>();
+            Mapper.CreateMap<CreateArticleView,ArticleCategory>();
+
             Mapper.CreateMap<CreateArticleView, Article>();
+            #endregion
 
-            //Mapper.CreateMap<Article,CreateArticleView>();
+
+            #region ArticleCategory
+            Mapper.CreateMap<ArticleCategory, ArticleCategoryView>();
+
+            Mapper.CreateMap<CreateArticleCategory, ArticleCategory>();
+
+            Mapper.CreateMap<ArticleCategory, UpdateArticleCategoryView>();
+            Mapper.CreateMap<UpdateArticleCategoryView, ArticleCategory>(); 
+            #endregion
         }
     }
 }

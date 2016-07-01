@@ -15,6 +15,7 @@ namespace XGY_Model
         {
             this.CreateTime = DateTime.Now;
             this.ModifiedTime=DateTime.Now;
+            this.Id=Guid.NewGuid();                        //这里需要新建个ID，要是没有为其赋值。
         }
         public virtual Guid Id { get; set; }
         public virtual DateTime CreateTime { get; set; }

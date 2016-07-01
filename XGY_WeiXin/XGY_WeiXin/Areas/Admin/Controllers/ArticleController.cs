@@ -33,6 +33,7 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
             }            
         }
 
+
         [HttpGet]
         public ActionResult Create(CreateArticleView model)
         {
@@ -60,7 +61,7 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
                 if (model!=null)
                 {
                     try
-                    {
+                    {                        
                         var article = new Article();
                         Mapper.Map(model,article);
                         _unitOfWork.ArticleRepository.Insert(article);
@@ -71,9 +72,20 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
                         throw new Exception(ex.Message);
                     }                    
                 }
-                return View("Create",model);
+                return View();
             }
             return View("Create", model);
+        }
+
+        [HttpGet]
+        public ActionResult Update()
+        {
+            return View();
+        }
+        [HttpPost,ActionName("Update")]
+        public ActionResult UpdatePost()
+        {
+            return View();
         }
 
         public ActionResult Delete(Guid id)
@@ -81,6 +93,7 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
             try
             {
                 _unitOfWork.ArticleRepository.Delete(id);
+                _unitOfWork.Save();
                 return RedirectToAction("Index");
             }
             catch (Exception ex)

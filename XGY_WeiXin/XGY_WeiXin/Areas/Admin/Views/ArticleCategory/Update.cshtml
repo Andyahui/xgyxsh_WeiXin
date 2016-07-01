@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Update";
+}
+@model XGY_WeiXin.Areas.Admin.Models.UpdateArticleCategoryView
+<div class="col-md-10">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="content-box-large">
+                <div class="panel-heading">
+                    <div class="panel-title">更新文章</div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal">
+                        @using (Html.BeginForm("Update", "ArticleCategory", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.HiddenFor(x=>x.Id)
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.Name, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-5">
+                                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control",placeholder =Html.DisplayNameFor(x=>x.Name)})
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="help-block">@Html.ValidationMessageFor(x => x.Name)</div>
+                                </div>
+                            </div>
+                            <div calss="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <a href="@Url.Action("Index")"> <button type="submit" class="btn btn-default">确定</button></a>
+                                    <a href="@Url.Action("Index")"> <label class="btn btn-primary">取消</label></a>
+                                    <div class="help-block">
+                                     @Html.ValidationSummary(true)   
+                                    </div>                                     
+                                </div>
+                            </div>
+                    }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

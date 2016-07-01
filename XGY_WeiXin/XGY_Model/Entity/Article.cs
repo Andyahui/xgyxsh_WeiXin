@@ -41,10 +41,6 @@ namespace XGY_Model.Entity
     /// </summary>
     public class ArticleCategory:BaseEntity
     {
-        public ArticleCategory()
-        {
-            //this.Articles=new Collection<Article>();
-        }
         /// <summary>
         /// 分类名字
         /// </summary>
