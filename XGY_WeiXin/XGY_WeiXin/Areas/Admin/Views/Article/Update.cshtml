@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Update";
+}
+@model XGY_WeiXin.Areas.Admin.Models.UpdateArticleView
+<div class="col-md-10">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="content-box-large">
+                <div class="panel-heading">
+                    <div class="panel-title">编辑文章</div>
+                </div>
+                <div class="panel-body">
+                    <div id="rootwizard">
+                        <div class="tab-content">
+                            <div class="tab-pane active">
+                                @using (Html.BeginForm("Update", "Article", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                {
+                                    <div class="form-group">
+                                        @Html.LabelFor(x => x.Title, new { @class = "col-sm-2 control-label" })
+                                        <div class="col-sm-6">
+                                            @Html.TextBoxFor(x => x.Title, new { @class = "form-control", placeholder =Html.DisplayNameFor(x=>x.Title) })
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="help-block">@Html.ValidationMessageFor(x => x.Title)</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(x => x.ArticleCategoryId, new { @class = "col-sm-2 control-label" })
+                                        <div class="col-sm-6">
+                                            @Html.DropDownListFor(x => x.ArticleCategoryId, Model.ArticleCategory, new { @class = "form-control" })
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="help-block">@Html.ValidationMessageFor(x => x.ArticleCategoryId)</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(x => x.UserId, new { @class = "col-sm-2 control-label" })
+                                        <div class="col-sm-6">
+                                            @Html.DropDownListFor(x => x.UserId, Model.Users, new { @class = "form-control" })
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="help-block">@Html.ValidationMessageFor(x => x.UserId)</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(x => x.PicUrl, new { @class = "col-sm-2 control-label" })
+                                        <div class="col-sm-6">
+                                            @Html.TextBoxFor(x => x.PicUrl, new { @class = "btn btn-default", type = "file", id = "exampleinputfile1" })
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="help-block">@Html.ValidationMessageFor(x => x.PicUrl)</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(x => x.Description, new { @class = "col-sm-2 control-label" })
+                                        <div class="col-sm-6">
+                                            @Html.TextAreaFor(x => x.Description, new { @class = "form-control", row = "4" })
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="help-block">@Html.ValidationMessageFor(x => x.Description)</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(x => x.Content, new { @class = "col-sm-2 control-label" })
+                                        <div class="col-sm-6">
+                                            @Html.TextAreaFor(x => x.Content, new { @class = "form-control", row = "5" })
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="help-block">@Html.ValidationMessageFor(x => x.Content)</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-default">确定</button>
+                                            <a href="@Url.Action("Index","Article")"><label class="btn btn-primary">取消</label></a>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="help-block">@Html.ValidationSummary(true)</div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

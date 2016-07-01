@@ -29,8 +29,10 @@ namespace XGY_WeiXin.Areas.Admin.Models
 
             Mapper.CreateMap<Article, ArticleView>();
             Mapper.CreateMap<CreateArticleView,ArticleCategory>();
-
             Mapper.CreateMap<CreateArticleView, Article>();
+
+            Mapper.CreateMap<Article,UpdateArticleView>();
+            Mapper.CreateMap<ArticleCategory,UpdateArticleView>();            
             #endregion
 
             #region ArticleCategory

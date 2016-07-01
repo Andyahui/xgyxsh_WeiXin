@@ -32,8 +32,6 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
                 throw new Exception(ex.Message);
             }            
         }
-
-
         [HttpGet]
         public ActionResult Create(CreateArticleView model)
         {
@@ -57,30 +55,53 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
         public ActionResult CreatePost(CreateArticleView model)
         {
             if (ModelState.IsValid)
-            {
-                if (model!=null)
-                {
+            {                
                     try
-                    {                        
-                        var article = new Article();
-                        Mapper.Map(model,article);
-                        _unitOfWork.ArticleRepository.Insert(article);
+                    {                                            
+                        var entity = Mapper.Map<Article>(model);
+                        _unitOfWork.ArticleRepository.Insert(entity);
+                        _unitOfWork.Save();
                         return RedirectToAction("Index");
                     }
                     catch (Exception ex)
                     {                        
                         throw new Exception(ex.Message);
-                    }                    
-                }
-                return View();
+                    }                                                    
             }
-            return View("Create", model);
+            return RedirectToAction("Create");
         }
 
         [HttpGet]
-        public ActionResult Update()
+        public ActionResult Update(UpdateArticleView model)
         {
-            return View();
+            try
+            {
+                //model.ArticleCategory = _unitOfWork.ArticleCategoryRepository.Get()
+                //.Where(x => x.Id != Guid.Empty)
+                //.Select(x => new SelectListItem()
+                //{
+                //    Text = x.Name,
+                //    Value = x.Id.ToString()
+                //}).ToList();
+                //model.Users = _unitOfWork.UserRepository.Get()
+                //    .Where(x => x.Id != Guid.Empty)
+                //    .Select(x => new SelectListItem()
+                //    {
+                //        Text = x.LoginName,
+                //        Value = x.Id.ToString()
+                //    }).ToList();
+                var entity=_unitOfWork.ArticleRepository.GetById(model.Id);
+                if(entity!=null)
+                {                    
+                    Mapper.Map(entity, model);
+                    return View(model);                    
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {                
+                throw new Exception(ex.Message);
+            }            
         }
         [HttpPost,ActionName("Update")]
         public ActionResult UpdatePost()
@@ -88,11 +109,11 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult Delete(Guid id)
+        public ActionResult Delete(Guid ids)
         {
             try
             {
-                _unitOfWork.ArticleRepository.Delete(id);
+                _unitOfWork.ArticleRepository.Delete(ids);
                 _unitOfWork.Save();
                 return RedirectToAction("Index");
             }

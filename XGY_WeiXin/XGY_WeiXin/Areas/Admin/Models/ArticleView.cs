@@ -32,8 +32,8 @@ namespace XGY_WeiXin.Areas.Admin.Models
         public CreateArticleView()
         {
             this.CreateTime = DateTime.Now;
-            this.ArticleCategory = new List<SelectListItem>();
-            this.Users = new List<SelectListItem>();
+            //this.ArticleCategory = new List<SelectListItem>();
+            //this.Users = new List<SelectListItem>();
         }
         public DateTime CreateTime { get; set; }
         [DisplayName("文章标题"),Required(ErrorMessage = "标题不能为空")]
@@ -50,7 +50,34 @@ namespace XGY_WeiXin.Areas.Admin.Models
         [DisplayName("文章分类"), Required(ErrorMessage = "分类不能为空")]
         public Guid ArticleCategoryId { get; set; }
         public IEnumerable<SelectListItem> ArticleCategory { get; set; }
-    } 
+    }
+
+    public class UpdateArticleView
+    {
+        public UpdateArticleView()
+        {
+            this.CreateTime = DateTime.Now;
+            //this.ArticleCategory = new List<SelectListItem>();
+            //this.Users = new List<SelectListItem>();
+        }
+        public Guid Id { get; set; }
+        public DateTime CreateTime { get; set; }
+        [DisplayName("文章标题"), Required(ErrorMessage = "标题不能为空")]
+        public string Title { get; set; }
+        [DisplayName("文章描述"), Required(ErrorMessage = "描述不能为空")]
+        public string Description { get; set; }
+        [DisplayName("文章图片"), Required(ErrorMessage = "图片不能为空")]
+        public string PicUrl { get; set; }
+        [DisplayName("文章内容"), Required(ErrorMessage = "内容不能为空")]
+        public string Content { get; set; }
+        [DisplayName("创建人"), Required(ErrorMessage = "创建人不能为空")]
+        public Guid UserId { get; set; }
+        public IEnumerable<SelectListItem> Users { get; set; }
+        [DisplayName("文章分类"), Required(ErrorMessage = "分类不能为空")]
+        public Guid ArticleCategoryId { get; set; }
+        public IEnumerable<SelectListItem> ArticleCategory { get; set; }
+    }
+
     #endregion
 
     #region ArticleCatagory
