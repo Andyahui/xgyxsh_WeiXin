@@ -7,10 +7,11 @@ using AutoMapper;
 using XGY_Model.Entity;
 using XGY_Service.Repository;
 using XGY_WeiXin.Areas.Admin.Models;
+using XGY_WeiXin.WeiXinHelper;
 
 namespace XGY_WeiXin.Areas.Admin.Controllers
 {
-    public class ArticleCategoryController : Controller
+    public class ArticleCategoryController : BaseController
     {
         private readonly UnitOfWork _unitOfWork=new UnitOfWork();
         public ActionResult Index(ArticleCategoryList model)

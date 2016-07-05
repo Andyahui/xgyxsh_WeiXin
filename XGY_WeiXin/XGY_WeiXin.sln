@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XGY_Model", "XGY_Model\XGY_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XGY_Service", "XGY_Service\XGY_Service.csproj", "{75FBCD3E-BA17-4348-B4FD-16548C00F5FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common_Core", "Common_Core\Common_Core.csproj", "{4ADB7586-8203-45B1-B1C8-D5AD30E5963A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +92,15 @@ Global
 		{75FBCD3E-BA17-4348-B4FD-16548C00F5FF}.Test|Any CPU.ActiveCfg = Release|Any CPU
 		{75FBCD3E-BA17-4348-B4FD-16548C00F5FF}.Test|Any CPU.Build.0 = Release|Any CPU
 		{75FBCD3E-BA17-4348-B4FD-16548C00F5FF}.Test|x86.ActiveCfg = Release|Any CPU
+		{4ADB7586-8203-45B1-B1C8-D5AD30E5963A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ADB7586-8203-45B1-B1C8-D5AD30E5963A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ADB7586-8203-45B1-B1C8-D5AD30E5963A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4ADB7586-8203-45B1-B1C8-D5AD30E5963A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ADB7586-8203-45B1-B1C8-D5AD30E5963A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ADB7586-8203-45B1-B1C8-D5AD30E5963A}.Release|x86.ActiveCfg = Release|Any CPU
+		{4ADB7586-8203-45B1-B1C8-D5AD30E5963A}.Test|Any CPU.ActiveCfg = Release|Any CPU
+		{4ADB7586-8203-45B1-B1C8-D5AD30E5963A}.Test|Any CPU.Build.0 = Release|Any CPU
+		{4ADB7586-8203-45B1-B1C8-D5AD30E5963A}.Test|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

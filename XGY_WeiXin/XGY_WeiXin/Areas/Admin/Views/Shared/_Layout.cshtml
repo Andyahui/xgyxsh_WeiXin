@@ -15,7 +15,7 @@
                 <div class="col-md-5">
                     <!-- Logo -->
                     <div class="logo">
-                        <h1><a href="javascript:()">微信后台管理</a></h1>
+                        <h1><a href="javascript:()">后台管理系统</a></h1>
                     </div>
                 </div>
                 <div class="col-md-5">
@@ -35,9 +35,9 @@
                         <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
                             <ul class="nav navbar-nav">
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">张辉 您好 <b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">管理员 您好 <b class="caret"></b></a>
                                     <ul class="dropdown-menu animated fadeInUp">
-                                        <li><a href="#">个人信息</a></li>
+                                        <li><a href="@Url.Action("Editor","Account")">个人信息</a></li>
                                         <li><a href="@Url.Action("Index", "Account")">退出登录</a></li>
                                     </ul>
                                 </li>
@@ -72,11 +72,12 @@
                         <li><a href="editors.html"><i class="glyphicon glyphicon-pencil"></i> Editors</a></li>
                         <li><a href="@Url.Action("Index","User")"><i class="glyphicon glyphicon-list"></i> 用户管理</a></li>
                         <li><a href="forms.html"><i class="glyphicon glyphicon-tasks"></i> Forms</a></li>
-
                     </ul>
                 </div>
             </div>
-
+            <div class="col-md-8">
+                @Html.Partial("_Notifications")
+            </div>            
             @RenderBody()
         </div>            
         </div>

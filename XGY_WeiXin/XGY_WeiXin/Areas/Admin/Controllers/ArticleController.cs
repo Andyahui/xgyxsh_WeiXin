@@ -6,13 +6,14 @@ using AutoMapper;
 using XGY_Model.Entity;
 using XGY_Service.Repository;
 using XGY_WeiXin.Areas.Admin.Models;
+using XGY_WeiXin.WeiXinHelper;
 
 namespace XGY_WeiXin.Areas.Admin.Controllers
 {
     /// <summary>
     /// 文章列表
     /// </summary>
-    public class ArticleController : Controller
+    public class ArticleController : BaseController
     {
         private readonly UnitOfWork _unitOfWork=new UnitOfWork();
         public ActionResult Index(PageArticleList model)

@@ -7,10 +7,14 @@ using AutoMapper;
 using XGY_Model.Entity;
 using XGY_Service.Repository;
 using XGY_WeiXin.Areas.Admin.Models;
+using XGY_WeiXin.WeiXinHelper;
 
 namespace XGY_WeiXin.Areas.Admin.Controllers
 {
-    public class UserController : Controller
+    /// <summary>
+    /// 用户类
+    /// </summary>
+    public class UserController : BaseController
     {
         private readonly UnitOfWork _unitOfWork=new UnitOfWork();
         public ActionResult Index(UserListView model)
@@ -42,6 +46,7 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
                     var entity = Mapper.Map<User>(model);
                     _unitOfWork.UserRepository.Insert(entity);
                     _unitOfWork.Save();
+                    SuccessNotification("添加成功");
                     return RedirectToAction("Index");
                 }
                 catch (Exception ex)
@@ -49,6 +54,7 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
                     throw new Exception(ex.Message);
                 }
             }
+            ErrorNotification("请填写表单！");
             return View(model);
         }
         [HttpGet]
@@ -59,7 +65,7 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
                 var entity=_unitOfWork.UserRepository.GetById(model.Id);
                 if (entity!=null)
                 {
-                    Mapper.Map(entity, model);
+                    Mapper.Map(entity, model);                    
                     return View(model);
                 }
                 return RedirectToAction("Index");
@@ -79,6 +85,7 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
                     var entity=Mapper.Map<User>(model);
                     _unitOfWork.UserRepository.Update(entity);
                     _unitOfWork.Save();
+                    SuccessNotification("更新成功");
                     return RedirectToAction("Index");
                 }
                 catch (Exception ex)
@@ -86,7 +93,7 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
                     throw new Exception(ex.Message);
                 }
             }
-            return View();
+            return View(model);
         }
 
         public ActionResult Delete(List<Guid> ids )
@@ -96,6 +103,7 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
                 foreach (var id in ids)
                 {
                     _unitOfWork.UserRepository.Delete(id);
+                    SuccessNotification("删除成功");
                     _unitOfWork.Save();
                 }
             }

@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Bootstrap Admin Theme v3</title>
+    <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="~/Content/admin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -15,7 +15,7 @@
                 <div class="col-md-12">
                     <!-- Logo -->
                     <div class="logo">
-                        <h1><a href="#">微信后台登陆</a></h1>
+                        <h1><a href="#">后台管理</a></h1>
                     </div>
                 </div>
             </div>
@@ -23,6 +23,9 @@
     </div>
     <div class="page-content container">
         <div class="row">
+            <div class="form-group" style="padding-left:initial">
+                @Html.Partial("_Notifications")
+            </div>              
             @RenderBody()
         </div>
     </div>

@@ -1,0 +1,45 @@
+﻿@using XGY_WeiXin.WeiXinHelper
+@{
+    //success messages
+    var successMessages = new List<string>();
+    if (TempData[string.Format("cloud.notifications.{0}", NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(TempData[string.Format("cloud.notifications.{0}", NotifyType.Success)] as IList<string>);
+    }
+    if (ViewData[string.Format("cloud.notifications.{0}", NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(ViewData[string.Format("cloud.notifications.{0}", NotifyType.Success)] as IList<string>);
+    }
+
+
+    //error messages
+    var errorMessages = new List<string>();
+    if (TempData[string.Format("cloud.notifications.{0}", NotifyType.Error)] != null)
+    {
+        errorMessages.AddRange(TempData[string.Format("cloud.notifications.{0}", NotifyType.Error)] as IList<string>);
+    }
+    if (ViewData[string.Format("cloud.notifications.{0}", NotifyType.Error)] != null)
+    {
+        errorMessages.AddRange(ViewData[string.Format("cloud.notifications.{0}", NotifyType.Error)] as IList<string>);
+    }
+}
+@if (successMessages.Count > 0)
+{
+    <div class="alert alert-success alert-dismissible" role="alert" id="msgSuccess">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        @foreach (var message in successMessages)
+        {
+            @Html.Raw(HttpUtility.JavaScriptStringEncode(message))
+        }
+    </div>
+}
+@if (errorMessages.Count > 0)
+{
+    <div class="alert alert-warning alert-dismissible" role="alert" id="msgWarning">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        @foreach (var message in errorMessages)
+        {
+            @Html.Raw(HttpUtility.JavaScriptStringEncode(message))
+        }
+    </div>
+}

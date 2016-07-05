@@ -8,8 +8,8 @@ using XGY_Service.AutoMapper;
 
 namespace XGY_WeiXin.Areas.Admin.Models
 {
-    public class ModelMapper:IStartupTask
-    {        
+    public class ModelMapper : IStartupTask
+    {
         /// <summary>
         /// 利用泛型，看实际传入的是什么，从而转换什么。
         /// </summary>
@@ -28,11 +28,11 @@ namespace XGY_WeiXin.Areas.Admin.Models
             #region Article
 
             Mapper.CreateMap<Article, ArticleView>();
-            Mapper.CreateMap<CreateArticleView,ArticleCategory>();
+            Mapper.CreateMap<CreateArticleView, ArticleCategory>();
             Mapper.CreateMap<CreateArticleView, Article>();
 
-            Mapper.CreateMap<Article,UpdateArticleView>();
-            Mapper.CreateMap<ArticleCategory,UpdateArticleView>();            
+            Mapper.CreateMap<Article, UpdateArticleView>();
+            Mapper.CreateMap<ArticleCategory, UpdateArticleView>();
             #endregion
 
             #region ArticleCategory
@@ -41,15 +41,21 @@ namespace XGY_WeiXin.Areas.Admin.Models
             Mapper.CreateMap<CreateArticleCategory, ArticleCategory>();
 
             Mapper.CreateMap<ArticleCategory, UpdateArticleCategoryView>();
-            Mapper.CreateMap<UpdateArticleCategoryView, ArticleCategory>(); 
+            Mapper.CreateMap<UpdateArticleCategoryView, ArticleCategory>();
             #endregion
 
             #region User
 
-            Mapper.CreateMap<User,UserView>();
-            Mapper.CreateMap<CreateUserView,User>();
-            Mapper.CreateMap<User,UpdateUserView>();
+            Mapper.CreateMap<User, UserView>();
+            Mapper.CreateMap<CreateUserView, User>();
+            Mapper.CreateMap<User, UpdateUserView>();
             Mapper.CreateMap<UpdateUserView, User>();
+
+            #endregion
+
+            #region Account
+
+            Mapper.CreateMap<User,UpdateUserAccountView>();
 
             #endregion
         }

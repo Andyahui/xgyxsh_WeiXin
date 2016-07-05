@@ -1,36 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
+using XGY_Model.Entity;
+using XGY_Service;
+using XGY_Service.Repository;
+using XGY_WeiXin.Areas.Admin.Models;
+using XGY_WeiXin.WeiXinHelper;
 
 namespace XGY_WeiXin.Areas.Admin.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
-        // GET: Admin/Account
+        private readonly UnitOfWork _unitOfWork=new UnitOfWork();
+
+        #region Account
         /// <summary>
         /// 登录页面
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(UserAccountView model)
         {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult IndexPost()
-        {
-            return View();
+            return View(model);
         }
 
-        /// <summary>
-        /// 注册
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Regist()
+        [HttpPost, ActionName("Index")]
+        public ActionResult IndexPost(UserAccountView model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                var entity = _unitOfWork.UserRepository.Table().FirstOrDefault(x => x.LoginName == model.LoginName);
+                if (entity != null)
+                {
+                    if (entity.LoginPwd == model.LoginPwd)
+                    {
+                        SuccessNotification("登录成功");
+                        HttpCookie cookie_Account=new HttpCookie("Account",entity.LoginName);
+                        Response.AppendCookie(cookie_Account);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    ErrorNotification("密码错误!");
+                    return View(model);
+                }
+                ErrorNotification("登录名错误!");
+                return View(model);
+            }
+            ErrorNotification("表单不能为空，请认真填写！");
+            return View(model);
+        } 
+        #endregion
+
+        /// <summary>
+        /// 个人信息
+        /// </summary>
+        /// <returns></returns>  
+        public ActionResult Editor(UpdateUserAccountView model)
+        {
+            try
+            {
+                string account = Request.Cookies["Account"].Value;
+                var entity = _unitOfWork.UserRepository.Table().FirstOrDefault(x => x.LoginName == account);
+                Mapper.Map(entity, model);
+            }
+            catch (Exception ex)
+            {                
+                throw new Exception(ex.Message);
+            }            
+            return View(model);
         }
     }
 }

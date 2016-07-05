@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Editor";
+}
+@model XGY_WeiXin.Areas.Admin.Models.UpdateUserAccountView
+<div class="col-md-10">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="content-box-large">
+                <div class="panel-heading">
+                    <div class="panel-title">个人信息</div>
+                </div>
+                <div class="panel-body">
+                    <div id="rootwizard">
+                        <div class="tab-content">
+                            <div class="tab-pane active">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        @Html.LabelFor(x => x.LoginName, new { @class = "col-sm-2 control-label" })
+                                        <div class="col-sm-3">
+                                            <span class="form-control">@Model.LoginName</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(x => x.UserName, new { @class = "col-sm-2 control-label" })
+                                        <div class="col-sm-3">
+                                            <span class="form-control">@Model.UserName</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">                                        
+                                        @Html.LabelFor(x => x.LoginPwd, new { @class = "col-sm-2 control-label" })
+                                        <div class="col-sm-3">
+                                            <span class="form-control">@Model.LoginPwd</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(x => x.CreateTime, new { @class = "col-sm-2 control-label" })
+                                        <div class="col-sm-3">
+                                            <span class="form-control">@Model.CreateTime</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

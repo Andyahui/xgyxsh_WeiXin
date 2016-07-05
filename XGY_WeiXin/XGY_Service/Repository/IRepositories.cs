@@ -17,5 +17,6 @@ namespace XGY_Service.Repository
         void Insert(TEntity entity);
         void Delete(object id);
         void Update(TEntity entity);
+        IQueryable<TEntity> Table();
     }
 }

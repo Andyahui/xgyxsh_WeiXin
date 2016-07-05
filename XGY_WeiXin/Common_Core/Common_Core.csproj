@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{75FBCD3E-BA17-4348-B4FD-16548C00F5FF}</ProjectGuid>
+    <ProjectGuid>{4ADB7586-8203-45B1-B1C8-D5AD30E5963A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XGY_Service</RootNamespace>
-    <AssemblyName>XGY_Service</AssemblyName>
+    <RootNamespace>Common_Core</RootNamespace>
+    <AssemblyName>Common_Core</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,14 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,23 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountService.cs" />
-    <Compile Include="AutoMapper\BaseQueryModel.cs" />
-    <Compile Include="AutoMapper\IStartupTask.cs" />
+    <Compile Include="CommonHelper.cs" />
+    <Compile Include="JKFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\IRepositories.cs" />
-    <Compile Include="Repository\Repository.cs" />
-    <Compile Include="Repository\UnitOfWork.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Common_Core\Common_Core.csproj">
-      <Project>{4adb7586-8203-45b1-b1c8-d5ad30e5963a}</Project>
-      <Name>Common_Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XGY_Model\XGY_Model.csproj">
-      <Project>{6eb5e4e7-cbda-4161-8bc9-4b493e699d99}</Project>
-      <Name>XGY_Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
