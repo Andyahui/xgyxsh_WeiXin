@@ -11,7 +11,6 @@ using Senparc.Weixin.MP.Entities.GoogleMap;
 using Senparc.Weixin.MP.Entities.Request;
 using Senparc.Weixin.MP.Helpers;
 using Senparc.Weixin.MP.MessageHandlers;
-using Senparc.Weixin.Context;
 
 namespace XGY_WeiXin.WeiXinHelper
 {
@@ -42,7 +41,6 @@ namespace XGY_WeiXin.WeiXinHelper
             return responseMessage;
         } 
         #endregion
-
 
        //（总结：）方法里面可以自由发挥，读取DB，判断关键字，甚至返回不同的ResponseMessageXX类型（只要最终的类型都是在IResponseMessageBase接口下的即可）。
 
@@ -232,7 +230,7 @@ namespace XGY_WeiXin.WeiXinHelper
 
         #endregion
 
-        #region 上报地理位置事件
+        #region 4：上报地理位置事件
 
         public override IResponseMessageBase OnEvent_LocationRequest(RequestMessageEvent_Location requestMessage)
         {
@@ -241,12 +239,14 @@ namespace XGY_WeiXin.WeiXinHelper
 
         #endregion
 
+        #region 5：点击菜单栏的url的按钮发送的时间，这里我们可以利用网页授权来找到个人的微信信息。
         public override IResponseMessageBase OnEvent_ViewRequest(RequestMessageEvent_View requestMessage)
         {
             var responseView = base.CreateResponseMessage<ResponseMessageText>();
             responseView.Content = "点击带有view的菜单栏";
             return responseView;
-        }
+        } 
+        #endregion
 
         #region 
         

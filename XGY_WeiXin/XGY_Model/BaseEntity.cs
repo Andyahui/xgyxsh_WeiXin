@@ -20,6 +20,5 @@ namespace XGY_Model
         public virtual Guid Id { get; set; }
         public virtual DateTime CreateTime { get; set; }
         public virtual DateTime ModifiedTime { get; set; }
-        public virtual string Ip { get; set; }
     }
 }

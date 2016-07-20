@@ -44,8 +44,7 @@ namespace XGY_Model.Entity
         public UserMap()
         {
             this.ToTable("User");
-            this.HasKey(t=>t.Id);
-            this.Property(x => x.Ip).HasMaxLength(128);
+            this.HasKey(t=>t.Id);            
             this.Property(x => x.HeadPhoto).HasMaxLength(128);
             this.Property(x => x.LoginName).HasMaxLength(128);
             this.Property(x => x.LoginPwd).HasMaxLength(128);

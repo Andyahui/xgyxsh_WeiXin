@@ -9,7 +9,7 @@ namespace XGY_Model.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(XGY_Model.EFDbContext context)
