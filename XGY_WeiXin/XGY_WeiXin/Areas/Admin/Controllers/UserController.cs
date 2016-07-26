@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using XGY_Model.Entity;
+using XGY_Service;
 using XGY_Service.Repository;
 using XGY_WeiXin.Areas.Admin.Models;
 using XGY_WeiXin.WeiXinHelper;
@@ -31,9 +32,9 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
             }                        
         }
         [HttpGet]
-        public ActionResult Create(CreateUserView model)
+        public ActionResult Create()
         {
-            return View(model);
+            return View();
         }
         [HttpPost, ActionName("Create")]
         public ActionResult CreatePost(CreateUserView model)

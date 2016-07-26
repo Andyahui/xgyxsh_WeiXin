@@ -57,8 +57,8 @@ namespace XGY_WeiXin.Areas.Admin.Models
         public UpdateArticleView()
         {
             this.CreateTime = DateTime.Now;
-            //this.ArticleCategory = new List<SelectListItem>();
-            //this.Users = new List<SelectListItem>();
+            this.ArticleCategorys = new List<SelectListItem>();
+            this.Users = new List<SelectListItem>();
         }
         public Guid Id { get; set; }
         public DateTime CreateTime { get; set; }
@@ -75,7 +75,7 @@ namespace XGY_WeiXin.Areas.Admin.Models
         public IEnumerable<SelectListItem> Users { get; set; }
         [DisplayName("文章分类"), Required(ErrorMessage = "分类不能为空")]
         public Guid ArticleCategoryId { get; set; }
-        public IEnumerable<SelectListItem> ArticleCategory { get; set; }
+        public IEnumerable<SelectListItem> ArticleCategorys { get; set; }
     }
 
     #endregion

@@ -36,6 +36,7 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
                 var entity = _unitOfWork.UserRepository.Table().FirstOrDefault(x => x.LoginName == model.LoginName);
                 if (entity != null)
                 {
+                    //entity.LoginPwd = AccountService.ConvertPwd(entity.LoginPwd);
                     if (entity.LoginPwd == model.LoginPwd)
                     {
                         SuccessNotification("登录成功");

@@ -52,7 +52,9 @@
     <Compile Include="EFDbContext.cs" />
     <Compile Include="Entity\Article.cs" />
     <Compile Include="Entity\RequestMessage.cs" />
-    <Compile Include="Entity\ResponseMessage.cs" />
+    <Compile Include="Entity\ResponseMethodMessage.cs" />
+    <Compile Include="Entity\ResponseNewsMessage.cs" />
+    <Compile Include="Entity\ResponseTextMessage.cs" />
     <Compile Include="Entity\Setting.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Migrations\Configuration.cs" />

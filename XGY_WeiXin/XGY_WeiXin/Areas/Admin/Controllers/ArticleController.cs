@@ -77,24 +77,26 @@ namespace XGY_WeiXin.Areas.Admin.Controllers
         {
             try
             {
-                //model.ArticleCategory = _unitOfWork.ArticleCategoryRepository.Get()
-                //.Where(x => x.Id != Guid.Empty)
-                //.Select(x => new SelectListItem()
-                //{
-                //    Text = x.Name,
-                //    Value = x.Id.ToString()
-                //}).ToList();
-                //model.Users = _unitOfWork.UserRepository.Get()
-                //    .Where(x => x.Id != Guid.Empty)
-                //    .Select(x => new SelectListItem()
-                //    {
-                //        Text = x.LoginName,
-                //        Value = x.Id.ToString()
-                //    }).ToList();
                 var entity=_unitOfWork.ArticleRepository.GetById(model.Id);
                 if(entity!=null)
                 {                    
                     Mapper.Map(entity, model);
+                    model.Users =_unitOfWork.UserRepository.Get()
+                        .Where(x=>x.Id!=Guid.Empty)
+                        .Select(x=>new SelectListItem()
+                        {
+                            Text=x.LoginName,
+                            Value=x.Id.ToString(),
+                            Selected = x.Id==model.UserId,
+                        }).ToList();
+                    model.ArticleCategorys =_unitOfWork.ArticleCategoryRepository.Get()
+                        .Where(x=>x.Id!=Guid.Empty)
+                        .Select(x=>new SelectListItem()
+                        {
+                            Text = x.Name,
+                            Value = x.Id.ToString(),
+                            Selected = x.Id == model.ArticleCategoryId,
+                        }).ToList();
                     return View(model);                    
                 }
                 return RedirectToAction("Index");

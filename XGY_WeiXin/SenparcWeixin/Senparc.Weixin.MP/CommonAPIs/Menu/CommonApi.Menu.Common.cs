@@ -257,7 +257,6 @@ namespace Senparc.Weixin.MP.CommonAPIs
                 }
             }
         }
-
         /// <summary>
         /// 根据微信返回的Json数据得到可用的GetMenuResult结果
         /// </summary>

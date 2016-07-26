@@ -19,12 +19,18 @@ namespace XGY_Model
             : base("name=XGYWeixin")
         {
         }
+
         #region 实体类
         public virtual DbSet<User> Users { get; set; }
 
         public virtual DbSet<Setting> Settings { get; set; }
         public virtual DbSet<Article> Articles { get; set; }
         public virtual DbSet<ArticleCategory> ArticleCategories { get; set; }
+        public virtual DbSet<RequestMessage> RequestMessage { get; set; }
+        public virtual DbSet<ResponseTextMessage> ResponseTextMessage { get; set; }
+        public virtual DbSet<ResponseNewsMessage> ResponseNewsMessage { get; set; }
+        public virtual DbSet<ResponseMethodMessage> ResponseMethodMessages { get; set; }
+        public virtual DbSet<ResponseNewsItem> ResponseNewsItem { get; set; }
 
         #endregion
         /// <summary>
@@ -33,10 +39,7 @@ namespace XGY_Model
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
-.Where(type => !String.IsNullOrEmpty(type.Namespace))
-.Where(type => type.BaseType != null && type.BaseType.IsGenericType
-    && type.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>));
+            var typesToRegister = Assembly.GetExecutingAssembly().GetTypes().Where(type => !String.IsNullOrEmpty(type.Namespace)).Where(type => type.BaseType != null && type.BaseType.IsGenericType&& type.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>));
             foreach (var type in typesToRegister)
             {
                 dynamic configurationInstance = Activator.CreateInstance(type);
