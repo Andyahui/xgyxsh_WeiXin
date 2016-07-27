@@ -58,6 +58,13 @@ namespace XGY_WeiXin.Areas.Admin.Models
             Mapper.CreateMap<User,UpdateUserAccountView>();
 
             #endregion
+
+            #region ResponseTextMessage
+
+            Mapper.CreateMap<ResponseTextMessage,ResponseTextMessageView>();
+            Mapper.CreateMap<CreateResponseTextMessageView,ResponseTextMessage>();
+
+            #endregion
         }
     }
 }

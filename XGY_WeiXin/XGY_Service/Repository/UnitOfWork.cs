@@ -99,6 +99,59 @@ namespace XGY_Service.Repository
 
         #endregion
 
+        #region ResponseTextRespository
+
+        private Repository<ResponseTextMessage> _responseTextMessageRepository;
+
+        public Repository<ResponseTextMessage> ResponseTextMessageRepository
+        {
+            get {
+                if (_responseTextMessageRepository==null)
+                {
+                    _responseTextMessageRepository=new Repository<ResponseTextMessage>(context);
+                }
+                return _responseTextMessageRepository;
+            }
+        }
+
+        #endregion
+
+        #region ResponseNewsRespository
+
+        private Repository<ResponseNewsMessage> _responseNewsMessageRespository;
+
+        public Repository<ResponseNewsMessage> ResponseNewsMessageRespository
+        {
+            get
+            {
+                if (_responseNewsMessageRespository==null)
+                {
+                    _responseNewsMessageRespository=new Repository<ResponseNewsMessage>(context);
+                }
+                return _responseNewsMessageRespository;
+            }
+        }
+
+        #endregion
+
+        #region ResponseMethodRespository
+
+        private Repository<ResponseMethodMessage> _responseMethodMessageRepository;
+
+        public Repository<ResponseMethodMessage> ResponseMethodMessageRepository
+        {
+            get
+            {
+                if(_responseMethodMessageRepository==null)
+                {
+                    _responseMethodMessageRepository=new Repository<ResponseMethodMessage>(context);
+                }
+                return _responseMethodMessageRepository;
+            }
+        }
+
+        #endregion
+
         #endregion
 
 

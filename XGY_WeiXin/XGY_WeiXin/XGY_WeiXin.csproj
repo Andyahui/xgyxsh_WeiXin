@@ -119,6 +119,7 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Models\ArticleView.cs" />
     <Compile Include="Areas\Admin\Models\ModelMapper.cs" />
+    <Compile Include="Areas\Admin\Models\ResponseTextView.cs" />
     <Compile Include="Areas\Admin\Models\UserView.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -180,6 +181,8 @@
     <Content Include="Areas\Admin\Views\Text\Index.cshtml" />
     <Content Include="Areas\Admin\Views\News\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Method\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Text\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Text\Update.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
