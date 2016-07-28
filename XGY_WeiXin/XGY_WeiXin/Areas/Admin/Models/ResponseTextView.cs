@@ -25,4 +25,12 @@ namespace XGY_WeiXin.Areas.Admin.Models
         public string Content { get; set; }
         public DateTime CreateTime { get; set; }
     }
+
+    public class UpdateResponseTextMessageView
+    {
+        public Guid Id { get; set; }
+        [Display(Name="响应文本内容"),Required(ErrorMessage = "文本内容不能为空")]
+        public string Content { get; set; }
+        //public DateTime CreateTime { get; set; }
+    }
 }

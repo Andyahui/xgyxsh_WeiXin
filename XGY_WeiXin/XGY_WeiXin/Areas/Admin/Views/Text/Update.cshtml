@@ -1,7 +1,43 @@
-﻿
+﻿@model XGY_WeiXin.Areas.Admin.Models.UpdateResponseTextMessageView
 @{
     ViewBag.Title = "Update";
 }
-
-<h2>Update</h2>
+<div class="col-md-10">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="content-box-large">
+                <div class="panel-heading">
+                    <div class="panel-title">修改响应文本</div>
+                </div>
+                <div class="panel-body">
+                    <div id="rootwizard">
+                        <div class="tab-content">
+                            <div class="tab-pane active">
+                                @using (Html.BeginForm("Update", "Text", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                {
+                                    <div class="form-group">
+                                        @Html.LabelFor(x => x.Content, new { @class = "col-sm-2 control-label" })
+                                        <div class="col-sm-5">
+                                            @Html.TextAreaFor(x => x.Content, new { @class = "form-control", placeholder = "文本内容" })
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="help-block">@Html.ValidationMessageFor(x => x.Content)</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-default">确定</button>
+                                            <a href="@Url.Action("Index")"><label class="btn btn-primary">取消</label></a>
+                                            <div class="help-block">@Html.ValidationSummary(true)</div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

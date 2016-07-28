@@ -63,6 +63,8 @@ namespace XGY_WeiXin.Areas.Admin.Models
 
             Mapper.CreateMap<ResponseTextMessage,ResponseTextMessageView>();
             Mapper.CreateMap<CreateResponseTextMessageView,ResponseTextMessage>();
+            Mapper.CreateMap<ResponseTextMessage, UpdateResponseTextMessageView>();
+            Mapper.CreateMap<UpdateResponseTextMessageView,ResponseTextMessage>();
 
             #endregion
         }
