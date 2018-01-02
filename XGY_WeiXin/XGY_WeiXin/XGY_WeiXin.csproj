@@ -119,6 +119,7 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Models\ArticleView.cs" />
     <Compile Include="Areas\Admin\Models\ModelMapper.cs" />
+    <Compile Include="Areas\Admin\Models\ResponseNewsView.cs" />
     <Compile Include="Areas\Admin\Models\ResponseTextView.cs" />
     <Compile Include="Areas\Admin\Models\UserView.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
